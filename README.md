@@ -4,6 +4,8 @@ An immersive particle Earth controlled by real hand gestures, mouse, or touch. B
 
 一颗可由真实手势、鼠标和触摸操控的沉浸式粒子地球。项目使用 TypeScript、Three.js、GLSL 和 MediaPipe Tasks Vision，纯前端运行；摄像头画面不会上传到项目服务器。全球城市光点使用本地数据，正面只显示少量不重叠的名称。
 
+[Live demo / 在线体验](https://wujixi97-wjx.github.io/gesture-particle-earth/) · [Share ideas / 提建议](https://github.com/wujixi97-wjx/gesture-particle-earth/discussions)
+
 ![Gesture Particle Earth preview](docs/preview.png)
 
 ## Experience / 体验

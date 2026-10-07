@@ -1,0 +1,50 @@
+import { test, expect } from '@playwright/test'
+
+test('renders the Earth and keeps pointer fallback usable', async ({ page }) => {
+  await page.goto('/')
+  await expect(page.locator('canvas.webgl')).toBeVisible()
+  await expect(page.getByRole('button', { name: /ENABLE GESTURE CONTROL/ })).toBeVisible()
+  await expect(page.getByText('移动手掌旋转', { exact: true })).toBeVisible()
+  await expect(page.getByText('捏合后两指开合缩放', { exact: true })).toBeVisible()
+  await expect(page.getByText('HOLD FIST', { exact: true })).toHaveCount(0)
+  await expect(page.locator('#rotation-sensitivity')).toHaveValue('0.35')
+  await expect(page.locator('#zoom-sensitivity')).toHaveValue('0.5')
+  await expect(page.locator('#fist-progress')).toHaveCount(0)
+  await page.locator('canvas.webgl').dblclick({ position: { x: 300, y: 250 } })
+  await page.mouse.move(300, 300)
+  await page.mouse.down(); await page.mouse.move(420, 340); await page.mouse.up()
+  await expect(page.getByText('MOUSE / TOUCH READY')).toBeVisible()
+})
+
+test('effect button toggles animations and disables repeated clicks', async ({ page }) => {
+  await page.goto('/')
+  const button = page.locator('#toggle-effect')
+  await expect(button).toBeEnabled()
+  await button.click()
+  await expect(button).toBeDisabled()
+  await expect(button).toHaveAttribute('data-effect', 'exploding')
+  await expect(button).toHaveText('聚合', { timeout: 6000 })
+  await button.click()
+  await expect(button).toBeDisabled()
+  await expect(button).toHaveAttribute('data-effect', 'assembling')
+  await expect(button).toHaveText('爆炸', { timeout: 6000 })
+  await expect(button).toBeEnabled()
+})
+
+test('falls back after camera denial', async ({ page, context }) => {
+  await context.clearPermissions()
+  await page.goto('/')
+  await page.getByRole('button', { name: /ENABLE GESTURE CONTROL/ }).click()
+  await expect(page.getByText('MOUSE / TOUCH ACTIVE')).toBeVisible()
+  await expect(page.locator('canvas.webgl')).toBeVisible()
+})
+
+test('shows diagnostics only in debug mode and survives resize', async ({ page }) => {
+  await page.goto('/?debug=true')
+  await expect(page.locator('#debug-panel')).toContainText('PARTICLES')
+  await page.goto('/')
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.waitForTimeout(3400)
+  await expect(page.locator('canvas.webgl')).toBeVisible()
+  await page.screenshot({ path: 'artifacts/earth-mobile.png', fullPage: true })
+})

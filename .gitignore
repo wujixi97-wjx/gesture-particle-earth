@@ -1,0 +1,18 @@
+node_modules/
+dist/
+playwright-report/
+test-results/
+.DS_Store
+*.log
+artifacts/
+/public/recognizer.worker.js
+
+# Local configuration and credentials must never be committed.
+.env
+.env.*
+!.env.example
+.npmrc
+*.pem
+*.key
+*.p12
+*.pfx

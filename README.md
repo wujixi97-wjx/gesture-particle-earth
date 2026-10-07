@@ -93,9 +93,9 @@ Push this repository to GitHub with `main` as the default branch. In repository 
 
 ## Feedback / 欢迎建议
 
-After making the repository public, enable GitHub Discussions for ideas about visual detail, gesture usability, accessibility, and performance. Use Issues for reproducible bugs; include browser, device, steps to reproduce, and a screenshot if helpful. Do not upload webcam footage or private data.
+Share ideas about visual detail, gesture usability, accessibility, and performance in [Discussions](https://github.com/wujixi97-wjx/gesture-particle-earth/discussions). Use Issues for reproducible bugs; include browser, device, steps to reproduce, and a screenshot if helpful. Do not upload webcam footage or private data.
 
-公开仓库后，可在 GitHub Discussions 讨论视觉细节、手势易用性、无障碍和性能；可复现的问题请发到 Issues，并附浏览器、设备与复现步骤。请勿上传摄像头画面或私人信息。
+欢迎在 [Discussions](https://github.com/wujixi97-wjx/gesture-particle-earth/discussions) 讨论视觉细节、手势易用性、无障碍和性能；可复现的问题请发到 Issues，并附浏览器、设备与复现步骤。请勿上传摄像头画面或私人信息。
 
 ## Asset provenance / 资源来源
 
